@@ -1,12 +1,15 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../firebase/config";
+import { db, storage } from "../firebase/config";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { addDoc, collection } from "firebase/firestore";
+import { useAuth } from "./useAuth";
 
 const useStorage = () => {
   const [progress, setProgress] = useState<number>(0);
   const [error, setError] = useState<Error | null>(null);
-  const [url, setUrl] = useState<string | null>(null);
+  // const [url, setUrl] = useState<string | null>(null);
+  const { user } = useAuth();
 
   const startUpload = (file: File) => {
     if (!file) {
@@ -29,11 +32,14 @@ const useStorage = () => {
       (error) => {
         setError(error);
       },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setUrl(downloadURL);
+      async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        // setUrl(downloadURL);
         setProgress(progress);
-
+        await addDoc(collection(db, "images"), {
+          image_url: downloadURL,
+          created_at: new Date(),
+          user_email: user?.email,
         });
       }
     );
@@ -42,7 +48,6 @@ const useStorage = () => {
   return {
     progress,
     error,
-    url,
     startUpload,
   };
 };

@@ -22,16 +22,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // const uid = user.uid;
-        // ...
-        setUser(user);
-        setisLoading(false);
-      } else {
-        // User is signed out
-        console.log("signed out");
-        // ...
-      }
+      setUser(user);
+      setisLoading(false);
     });
 
     return unsubscribe;

@@ -2,17 +2,17 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { FC } from "react";
 
-interface PublicRouteProps {
+interface PrivateRouteProps {
   children: React.ReactElement;
 }
 
-const PublicRoute: FC<PublicRouteProps> = ({ children }) => {
+const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
   const { user } = useAuth();
 
-  if (user) {
-    return <Navigate to="/" replace={true} />;
+  if (!user) {
+    return <Navigate to="/signup" replace={true} />;
   }
   return children;
 };
 
-export default PublicRoute;
+export default PrivateRoute;

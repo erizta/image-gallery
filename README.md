@@ -1,4 +1,4 @@
-# Simple Personal Notes ✍️
+# Image Gallery Sharing ✍️
 
 **Web application with responsive design to share your photos.** <br/>
 

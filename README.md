@@ -17,12 +17,12 @@
 <br/>
 
 🔗Source:
-![Vite] https://vitejs.dev/guide
-![Firebase] https://console.firebase.google.com
-![Firebase Docs] https://firebase.google.com/docs
-![DaisyUI] https://daisyui.com/
-![Tailwind CSS] https://tailwindcss.com/
-![uuid] https://www.npmjs.com/package/uuid
+- [Vite] https://vitejs.dev/guide
+- [Firebase] https://console.firebase.google.com
+- ![Firebase Docs] https://firebase.google.com/docs
+- ![DaisyUI] https://daisyui.com/
+- ![Tailwind CSS] https://tailwindcss.com/
+- ![uuid] https://www.npmjs.com/package/uuid
 
 ## Technologies used. 🧪
 <br/>
